@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Misba Ain - Portfolio</title>
+    <link rel="stylesheet" href="style_new.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.3/angular.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+
+    <style>
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: 100%;
+            background: linear-gradient(270deg, #ff9a9e, #fad0c4, #fad0c4, #fbc2eb, #a6c1ee);
+            background-size: 1000% 1000%;
+            animation: rainbowBG 20s ease infinite;
+            z-index: -2;
+        }
+
+        @keyframes rainbowBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .pic {
+            height: 150px;
+            width: 200px;
+        }
+
+        h1, h2 {
+            margin: 0;
+        }
+
+        header {
+            background-color: hwb(280 10% 30%);
+            color: white;
+            padding: 30px 0;
+            text-align: center;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            height: min-content;
+        }
+        .head{
+            min-height: min-content;
+        }
+        header h1 {
+            font-size: 2.5em;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        header p {
+            font-size: 18px;
+        }
+
+        nav {
+            margin: 20px 0;
+            text-align: center;
+        }
+
+        nav a {
+            color: #6A1B9A;
+            text-decoration: none;
+            margin: 0 20px;
+            font-weight: bold;
+            font-size: 1.1em;
+            transition: color 0.3s ease, transform 0.2s ease;
+        }
+
+        nav a:hover {
+            text-decoration: underline;
+            color: #2e0560;
+            transform: translateY(-2px);
+            font-weight: bolder;
+            font-style: italic;
+        }
+
+        nav a.active {
+            color: #6A1B9A;
+            font-weight: bold;
+        }
+
+        section {
+            max-width: 1000px;
+            margin: 20px auto;
+            padding: 25px;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+        }
+        
+        section:hover {
+            transform: scale(1.03); /* Slightly smaller zoom-in effect */
+            background: linear-gradient(135deg, rgba(106, 27, 154, 0.05), rgba(255, 255, 255, 0.1)); /* Subtle gradient */
+            box-shadow: 0 15px 25px rgba(106, 27, 154, 0.2), 0 5px 20px rgba(106, 27, 154, 0.1); /* Reduced glowing shadow */
+            border: 1px solid #6A1B9A; /* Thin border on hover */
+            z-index: 1; /* Ensure hovered section stays on top */
+        }
+        
+        
+        
+        
+        
+        
+        section h2 {
+            position: relative;
+            z-index: 2; /* Ensure header text stays on top */
+        }
+        
+        
+
+        section h2 {
+            color: #6A1B9A;
+            font-size: 2em;
+            margin-bottom: 20px;
+            border-bottom: 3px solid #6A1B9A;
+            padding-bottom: 10px;
+        }
+
+        footer {
+            text-align: center;
+            background: #333;
+            color: white;
+            padding: 20px 0;
+            position: relative;
+            bottom: 0;
+            width: 100%;
+            font-size: 0.9em;
+            box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        footer a {
+            color: #6A1B9A;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+            color: #4A148C;
+        }
+
+        @media (max-width: 768px) {
+            nav a {
+                margin: 0 10px;
+                font-size: 1em;
+            }
+
+            section {
+                padding: 20px;
+                margin: 10px;
+            }
+
+            header h1 {
+                font-size: 2em;
+            }
+        }
+
+        @media (max-width: 480px) {
+            header {
+                padding: 20px 0;
+            }
+
+            nav a {
+                margin: 0 5px;
+                font-size: 0.9em;
+            }
+
+            footer {
+                font-size: 0.8em;
+                padding: 15px 0;
+            }
+        }
+
+        .bubble {
+            position: fixed;
+            bottom: -100px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            animation: floatUp 20s linear infinite;
+            z-index: -1;
+        }
+
+        @keyframes floatUp {
+            0% {
+                transform: translateY(0) scale(1);
+                opacity: 0;
+            }
+            50% {
+                opacity: 0.3;
+            }
+            100% {
+                transform: translateY(-1200px) scale(1.5);
+                opacity: 0;
+            }
+        }
+        section:hover {
+            background: #fefefe;
+            box-shadow: 0 20px 40px rgba(106, 27, 154, 0.2);
+            border: 1px solid #eee;
+        }
+        
+        #particles-js {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -3;
+        }
+
+        #bubbleCanvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+        }
+    </style>
+</head>
+
+<body ng-app="portfolioApp" ng-controller="MainController">
+    <div id="particles-js"></div>
+
+    <header>
+        <div class ="head">
+        <div class="pic">
+            <img src="miz_new...jpg" alt="Misba's Image" style="height:150px; width:200px;">
+        </div>
+        <div class="header-content">
+            <div class="text-block">
+                <h1>Misba Ain</h1>
+                <p>3rd-year B.Tech (CSE) | Aspiring Data Analyst</p>
+            </div>
+        </div>
+    </div>
+    </header>
+
+    <nav>
+        <a href="#about">About</a>
+        <a href="#education">Education</a>
+        <a href="#projects">Projects</a>
+        <a href="#skills">Skills</a>
+        <a href="#certifications">Certifications</a>
+        <a href="#contact">Contact</a>
+    </nav>
+
+    <section id="about">
+        <h2>About Me</h2>
+        <p>Hello! I am Misba Ain, a 3rd-year B.Tech (CSE) student,passionate about the field of data science, with a particular interest in data visualization and analysis. I enjoy transforming raw data into meaningful insights that support decision-making and storytelling. My strengths include effective time management, strong problem-solving abilities, and a high level of confidence in presenting data-driven findings. I am a collaborative team player who thrives in dynamic environments and values the importance of clear communication and cooperation. With a strong foundation in organizational skills and a commitment to continuous learning, I am eager to contribute to impactful projects and grow within the data science domain.</p>
+    </section>
+
+    <section id="education">
+        <h2>Education</h2>
+        <p><strong>Bachelor of Technology in Computer Science and Engineering</strong></p>
+        <p>Institution: PRESIDENCY UNIVERSITY BANGALORE</p>
+        <p>Year: 2024-2026</p>
+    </section>
+
+    <section id="projects">
+        <h2>Projects</h2>
+        <ul>
+            <li><strong>Android Development:</strong> Designed an application to store student details using SQLite database.</li>
+            <li><strong>Machine Learning:</strong> Developed an image classification model using CNN with ReLU and Sequential Model.</li>
+        </ul>
+    </section>
+
+    <section id="skills">
+        <h2>Skills</h2>
+        <ul>
+            <li>Java</li>
+            <li>Python</li>
+            <li>HTML, CSS</li>
+            <li>JavaScript</li>
+        </ul>
+    </section>
+
+    <section id="certifications">
+        <h2>Certifications</h2>
+        <ul>
+            <li><strong>Data Science – Forge Data Science Club</strong></li>
+            <li><strong>Data Science – Acmegrade</strong></li>
+            <li><strong>Programming with JavaScript – Meta -Coursera</strong></li>
+            <li><strong>Data Science – CISCO Networking Academy</strong></li>
+        </ul>
+    </section>
+
+    <section id="contact">
+        <h2>Contact</h2>
+        <div style="display: flex; flex-direction: column; gap: 10px; font-size: 16px;">
+            <p>
+                <img src="https://img.icons8.com/ios-filled/24/linkedin.png" alt="LinkedIn" style="vertical-align: middle; margin-right: 8px;" />
+                <a href="https://www.linkedin.com/in/misba-ain-cse" target="_blank">LinkedIn</a>
+            </p>
+            <p>
+                <img src="https://img.icons8.com/ios-filled/24/email.png" alt="Email" style="vertical-align: middle; margin-right: 8px;" />
+                Email: <a href="mailto:misbaain134@gmail.com">misbaain134@gmail.com</a>
+            </p>
+            <p>
+                <img src="https://img.icons8.com/ios-filled/24/phone.png" alt="Phone" style="vertical-align: middle; margin-right: 8px;" />
+                Phone: <a href="tel:+919900212570">+91 9900212570</a>
+            </p>
+            <p>
+                <img src="https://img.icons8.com/ios-filled/24/whatsapp.png" alt="WhatsApp" style="vertical-align: middle; margin-right: 8px;" />
+                <a href="https://wa.me/919900212570" target="_blank">Message me on WhatsApp</a>
+            </p>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2025 Misba Ain. All rights reserved.</p>
+    </footer>
+
+    <canvas id="bubbleCanvas"></canvas>
+
+    <script>
+        const canvas = document.getElementById('bubbleCanvas');
+        const ctx = canvas.getContext('2d');
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+
+        window.addEventListener('resize', () => {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        });
+
+        const bubbles = [];
+        for (let i = 0; i < 20; i++) {
+            bubbles.push({
+                x: Math.random() * canvas.width,
+                y: Math.random() * canvas.height,
+                radius: 10 + Math.random() * 20,
+                dx: -1 + Math.random() * 2,
+                dy: -1 + Math.random() * 2
+            });
+        }
+
+        function drawBubbles() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+            for (let i = 0; i < bubbles.length; i++) {
+                const b = bubbles[i];
+                ctx.beginPath();
+                ctx.arc(b.x, b.y, b.radius, 0, Math.PI * 2);
+                ctx.fillStyle = 'rgba(255, 255, 255, 0.3)';
+                ctx.fill();
+
+                for (let j = i + 1; j < bubbles.length; j++) {
+                    const b2 = bubbles[j];
+                    const dx = b.x - b2.x;
+                    const dy = b.y - b2.y;
+                    const distance = Math.sqrt(dx * dx + dy * dy);
+                    if (distance < 150) {
+                        ctx.beginPath();
+                        ctx.moveTo(b.x, b.y);
+                        ctx.lineTo(b2.x, b2.y);
+                        ctx.strokeStyle = 'rgba(255, 255, 255, 0.2)';
+                        ctx.stroke();
+                    }
+                }
+
+                b.x += b.dx;
+                b.y += b.dy;
+
+                if (b.x < 0 || b.x > canvas.width) b.dx *= -1;
+                if (b.y < 0 || b.y > canvas.height) b.dy *= -1;
+            }
+
+            requestAnimationFrame(drawBubbles);
+        }
+
+        drawBubbles();
+    </script>
+</body>
+</html>
